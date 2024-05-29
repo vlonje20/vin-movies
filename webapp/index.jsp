@@ -15,7 +15,7 @@
             <!-- Float links to the right. Hide them on small screens -->
             <div class="w3-right w3-hide-small">
                 <a href="#projects" class="w3-bar-item w3-button">Movie</a>
-                <a href="#about" class="w3-bar-item w3-button">About</a>
+                <a href="#about" class="w3-bar-item w3-button">Stars</a>
                 <a href="#contact" class="w3-bar-item w3-button">Contact</a>
             </div>
         </div>
@@ -96,7 +96,7 @@
 
         <!-- About Section -->
         <div class="w3-container w3-padding-32" id="about">
-            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Favorite Stars</b></h3>
             <p>Dive into the world of Hollywood royalty with our exclusive showcase of spectacular actors who have captivated audiences with their immense talent and on-screen charisma. From award-winning performances to unforgettable character portrayals, our collection highlights the best and brightest stars in the industry. Whether you're a fan of seasoned veterans or rising newcomers, our lineup celebrates the diversity and depth of talent that continues to shape the landscape of entertainment. Join us in celebrating these cinematic trailblazers who have left an indelible mark on the silver screen and beyond.
             </p>
         </div>

@@ -81,7 +81,7 @@
     </distributionManagement>
     
     <build>
-        <finalName>my-application</finalName>
+        <finalName>vin-movies:v1</finalName>
         
         <plugins>
             <plugin>
