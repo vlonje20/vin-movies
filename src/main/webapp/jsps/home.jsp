@@ -40,29 +40,31 @@
             Step into the spotlight of cinematic greatness with our carefully curated collection of top movies from every genre. From heart-wrenching dramas to adrenaline-pumping thrillers, our showcase offers a diverse array of films that will keep you on the edge of your seat. Whether you're in the mood for a classic romance or a mind-bending sci-fi adventure, our selection is sure to satisfy all your movie cravings. Get ready to immerse yourself in the world of film and experience the magic of storytelling like never before.
             </p>
          </div>
-        <div class="w3-row-padding">
+
+         <div class="w3-row-padding">
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-black w3-padding">Wednesday - 2022</div>
-                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/wednesday.jpg" alt="House" style="width:100%">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Wednesday - 2022</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/wednesday.jpg" alt="Wednesday" style="width:100%">
+                </div>
+            </div>
+
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>FUBAR - 2023</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/fubar.jpg" alt="FUBAR" style="width:100%">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-black w3-padding">FUBAR - 2023</div>
-                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/fubar.jpg" alt="House" style="width:100%">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Renegade Nell - 2024</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/renegade+nell.jpg" alt="Nell" style="width:100%">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-black w3-padding">Renegade Nell - 2024</div>
-                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/renegade+nell.jpg" alt="House" style="width:100%">
-                </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-black w3-padding">The Continental - 2023</div>
-                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/continental.jpg" alt="House" style="width:100%">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>The Continental - 2023</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/continental.jpg" alt="Continental" style="width:100%">
                 </div>
             </div>
         </div>
@@ -70,26 +72,26 @@
         <div class="w3-row-padding">
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-black w3-padding">Lucifer - 2016</div>
-                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/lucifer.jpg" alt="House" style="width:99%">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Lucifer - 2016,/b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/lucifer.jpg" alt="Lucifer" style="width:99%">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-black w3-padding">Nobody - 2021</div>
-                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/nobody.jpg" alt="House" style="width:99%">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Nobody - 2021</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/nobody.jpg" alt="Nobody" style="width:99%">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-black w3-padding">The Old Guard - 2020</div>
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>The Old Guard - 2020</b></div>
                     <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/old+guard.jpg" alt="House" style="width:99%">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-black w3-padding">One Piece - 2023</div>
-                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/one+piece.jpg" alt="House" style="width:99%">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>One Piece - 2023</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/one+piece.jpg" alt="Piece" style="width:99%">
                 </div>
             </div>
         </div>
