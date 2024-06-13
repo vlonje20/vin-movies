@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>W3.CSS Template</title>
+        <title>vin-movies</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -72,7 +72,7 @@
         <div class="w3-row-padding">
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Lucifer - 2016,/b></div>
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Lucifer - 2016,</b></div>
                     <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/lucifer.jpg" alt="Lucifer" style="width:99%">
                 </div>
             </div>
@@ -109,28 +109,28 @@
                 <h3>Tom Ellis</h3>
                 <p class="w3-opacity">Known for...</p>
                 <p>Lucifer, Players, The Flash, The Strain, Family Guy, Queen America, Isn't It Romantic, Miranda, Rush.</p>
-                <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+                <p><button class="w3-button w3-light-grey w3-block">Lucifer Morningstar</button></p>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <img src="https://vin-movies.s3.amazonaws.com/top-stars/lesley-ann+brandt.jpg" alt="Lesley-Ann" style="width:100%">
                 <h3>Lesley-Ann Brandt</h3>
                 <p class="w3-opacity">Known for...</p>
                 <p>The Walking Dead: The Ones Who Live, Gotham, Lucifer, Kat Fight, Painkillers, The Librarians, Heartlock</p>
-                <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+                <p><button class="w3-button w3-light-grey w3-block">Mazikeen</button></p>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <img src="https://vin-movies.s3.amazonaws.com/top-stars/tim+olyphant.jpg" alt="Olyphant" style="width:100%">
                 <h3>Timothy Olyphant</h3>
                 <p class="w3-opacity">Known for...</p>
                 <p>Justified, Justified: City Primeval, The Mandalorian, The Good Place, Santa Clarita Diet, Hitman, Full Cycle.</p>
-                <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+                <p><button class="w3-button w3-light-grey w3-block">Raylan Givens</button></p>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <img src="https://vin-movies.s3.amazonaws.com/top-stars/jenna+ortega.jpg" alt="Jenna" style="width:100%">
                 <h3>Jenna Ortega</h3>
                 <p class="w3-opacity">Known for...</p>
                 <p>Wednesday, Scream IV, Miller's Girl, Jurassic World: Camp Cretaceous, American Carbage, Studio 666.</p>
-                <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+                <p><button class="w3-button w3-light-grey w3-block">Wednesday Adams</button></p>
             </div>
         </div>
 
