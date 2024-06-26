@@ -6,7 +6,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copy the WAR file into the webapps directory of Tomcat
 # Replace 'your-app.war' with the name of your WAR file
-ADD vin-movies.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=build /target/vin-movies.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose port 8080 for the Tomcat server
 EXPOSE 8080
