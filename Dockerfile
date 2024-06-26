@@ -1,20 +1,15 @@
-# Use an official Maven image to build the project
-FROM maven:3.9.6-openjdk-11 AS build
-WORKDIR /app
+# Use the official Tomcat 9 image as the base image
+FROM tomcat:9-jdk11-openjdk
 
-# Copy the pom.xml and source code into the container
-COPY pom.xml .
-COPY src ./src
+# Remove the default web applications deployed with Tomcat
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Build the project
-RUN mvn clean package
+# Copy the WAR file into the webapps directory of Tomcat
+# Replace 'your-app.war' with the name of your WAR file
+ADD vin-movies.war /usr/local/tomcat/webapps/ROOT.war
 
-# Use an official Tomcat image to run the WAR
-FROM tomcat:9
-COPY --from=build /app/target/vin-movies.war /usr/local/tomcat/webapps/
-
-# Expose the port
+# Expose port 8080 for the Tomcat server
 EXPOSE 8080
 
-# Run Tomcat
+# Start Tomcat server
 CMD ["catalina.sh", "run"]
