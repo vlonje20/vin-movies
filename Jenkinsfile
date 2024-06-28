@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'wls-agent' }  // Replace 'wsl-agent' with the label of your agent
+    agent { label 'vin-agent1' }  // Replace 'wsl-agent' with the label of your agent
 
     environment {
         GITHUB_REPO_URL = 'https://github.com/vlonje20/vin-movies.git'
