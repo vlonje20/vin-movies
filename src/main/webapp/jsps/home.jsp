@@ -85,13 +85,40 @@
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>The Old Guard - 2020</b></div>
-                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/old+guard.jpg" alt="House" style="width:99%">
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/old+guard.jpg" alt="Guard" style="width:99%">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>One Piece - 2023</b></div>
                     <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/one+piece.jpg" alt="Piece" style="width:99%">
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-row-padding">
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Into the Badlands - 2015</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/into+the+badlands.jpg" alt="Badlands" style="width:99%">
+                </div>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>iZombie - 2015</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/iZombie.jpg" alt="IZombie" style="width:99%">
+                </div>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Santa Clarita Diet - 2017</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/santa+clarita+diet.jpg" alt="Clarita" style="width:99%">
+                </div>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Game Of Thrones - 2011</b></div>
+                    <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/game+of+thrones.jpg" alt="Thrones" style="width:99%">
                 </div>
             </div>
         </div>

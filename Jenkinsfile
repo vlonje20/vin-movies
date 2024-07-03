@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'vin-agent1' }  // Replace 'wsl-agent' with the label of your agent
+    agent { label 'agent2' }  // Replace 'wsl-agent' with the label of your agent
 
     environment {
         GITHUB_REPO_URL = 'https://github.com/vlonje20/vin-movies.git'
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker --version'  // Verify Docker installation
-                    sh 'docker build -t vin-movies-image1 .'  // Build Docker image
+                    sh 'docker build -t vin-movies-image .'  // Build Docker image
                 }
             }
         }
@@ -40,7 +40,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    sh 'docker run --name vin-movies-v1 --rm -d -p 8008:8080 vin-movies-image1'  // Run Docker container in detached mode
+                    sh 'docker run --name vin-movies --rm -d -p 8000:8080 vin-movies-image'  // Run Docker container in detached mode
                 }
             }
         }
