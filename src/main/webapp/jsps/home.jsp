@@ -117,7 +117,7 @@
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Game Of Thrones - 2011</b></div>
+                    <div class="w3-display-bottomleft w3-padding" style="background-color: rgba(0, 0, 0, 0.5); color: white;"><b>Game of Thrones - 2011</b></div>
                     <img src="https://vin-movies.s3.amazonaws.com/movie-list-img/game+of+thrones.jpg" alt="Thrones" style="width:99%">
                 </div>
             </div>
