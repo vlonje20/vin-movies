@@ -23,11 +23,11 @@
   <junit.version>4.11</junit.version>
   <log4j.version>1.2.17</log4j.version>
   <sonar.host.url>http://localhost:9000/</sonar.host.url>
-  <sonar.login>vin-lonje</sonar.login>
-  <sonar.password>drama20</sonar.password>
+  <sonar.login>admin</sonar.login>
+  <sonar.password>dondrama@20K20</sonar.password>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  <sonar.projectKey>squ_ab34d2748585ff7b0358a1218271f512aa7b134b</sonar.projectKey>
+  <sonar.projectKey>squ_233b99487f71d89f3c3909e7d13320abe4263c5e</sonar.projectKey>
   <sonar.projectName>vin-movies</sonar.projectName>
         
  </properties>
@@ -99,13 +99,13 @@
  
  <distributionManagement>
      <repository>
-       <id>vin-movies-release</id>
+       <id>nexus</id>
        <name>vin-movies-release</name>
        <url>http://localhost:8081/repository/vin-movies-release/</url>
      </repository>
      
      <snapshotRepository>
-       <id>vin-movies-snapshot</id>
+       <id>nexus</id>
        <name>vin-movies-snapshot</name>
        <url>http://localhost:8081/repository/vin-movies-snapshot/</url>
      </snapshotRepository>
