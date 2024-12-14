@@ -93,14 +93,11 @@ pipeline {
                         git config user.email "${env.GIT_USER_EMAIL}"
                         git remote add origin ${env.GITLAB_REPO_URL}
                         
-                        # Pull the latest changes and handle conflicts
                         git pull origin master || true
-
+                        
                         cp -r ../${env.ARTIFACTS_DIR}/* .
                         git add .
                         git commit -m "Upload build artifacts from Jenkins pipeline [BUILD_ID: ${BUILD_ID}]"
-                        
-                        # Push changes to the remote repository
                         git push https://${GITLAB_USERNAME}:${GITLAB_PASSWORD}@${env.GITLAB_REPO_URL.replace('https://', '')} master
                         """
                     }
@@ -111,13 +108,12 @@ pipeline {
 
     post {
         always {
-            echo "Cleaning up Docker containers and images..."
-            sh "sudo docker ps -a | grep ${env.CONTAINER_NAME} && sudo docker stop ${env.CONTAINER_NAME} || true"
+            echo "Cleaning up Docker images and temporary artifacts..."
             sh "sudo docker rmi ${env.DOCKERHUB_REPO}:latest || true"
             sh "rm -rf gitlab-artifacts-${BUILD_ID} || true"
         }
         success {
-            echo 'Pipeline completed successfully!'
+            echo "Pipeline completed successfully! Your application is running at http://<host>:${env.CONTAINER_PORT}/"
         }
         failure {
             echo 'Pipeline failed!'
