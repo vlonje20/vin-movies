@@ -1,9 +1,3 @@
-// This Jenkinsfile is under testing
-// This Jenkinsfile comprises of the following tools:
-// - gitlad = for artifactory backup
-// - dockerhub = for image backup
-// - Contains the condition to dynamically assigned ports and container name tags so that a rerun will not break
-
 pipeline {
     agent { label 'agent1' }
 
@@ -66,7 +60,6 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    // Generate unique container name and check for an available port
                     def containerName = "vin-movies-${env.BUILD_ID}"
                     def availablePort = sh(
                         script: '''
@@ -79,7 +72,6 @@ pipeline {
                         returnStdout: true
                     ).trim()
 
-                    // Store port and container name in environment variables
                     env.CONTAINER_NAME = containerName
                     env.CONTAINER_PORT = availablePort
 
@@ -100,10 +92,16 @@ pipeline {
                         git config user.name "${env.GIT_USER_NAME}"
                         git config user.email "${env.GIT_USER_EMAIL}"
                         git remote add origin ${env.GITLAB_REPO_URL}
+                        
+                        # Pull the latest changes and handle conflicts
+                        git pull origin master || true
+
                         cp -r ../${env.ARTIFACTS_DIR}/* .
                         git add .
                         git commit -m "Upload build artifacts from Jenkins pipeline [BUILD_ID: ${BUILD_ID}]"
-                        git push https://${GITLAB_USERNAME}:${GITLAB_PASSWORD}@${env.GITLAB_REPO_URL.replace('https://', '')}
+                        
+                        # Push changes to the remote repository
+                        git push https://${GITLAB_USERNAME}:${GITLAB_PASSWORD}@${env.GITLAB_REPO_URL.replace('https://', '')} master
                         """
                     }
                 }
@@ -116,6 +114,7 @@ pipeline {
             echo "Cleaning up Docker containers and images..."
             sh "sudo docker ps -a | grep ${env.CONTAINER_NAME} && sudo docker stop ${env.CONTAINER_NAME} || true"
             sh "sudo docker rmi ${env.DOCKERHUB_REPO}:latest || true"
+            sh "rm -rf gitlab-artifacts-${BUILD_ID} || true"
         }
         success {
             echo 'Pipeline completed successfully!'
