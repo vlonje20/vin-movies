@@ -108,6 +108,10 @@ pipeline {
                         git config user.name "${env.GIT_USER_NAME}"
                         git config user.email "${env.GIT_USER_EMAIL}"
                         git remote add origin ${env.GITLAB_REPO_URL}
+
+                        git fetch origin
+                        git reset --hard origin/master
+                        git clean -fd
                         
                         # Override any changes in the remote repository
                         cp -r ../${env.ARTIFACTS_DIR}/* .
