@@ -1,0 +1,121 @@
+pipeline {
+    agent { label 'agent1' }
+
+    environment {
+        GITHUB_REPO_URL = 'https://github.com/vlonje20/vin-movies.git'
+        BRANCH_NAME = 'main'
+        GITHUB_CREDENTIALS_ID = 'vin_github_cred'
+        DOCKERHUB_CREDENTIALS_ID = 'dockerhub_cred'
+        DOCKERHUB_REPO = 'vlonje20/vin-movies'
+        GITLAB_REPO_URL = 'https://gitlab.com/vlonje20/vin-movies-artifacts.git'
+        GITLAB_CREDENTIALS_ID = 'gitlab_cred'
+        ARTIFACTS_DIR = 'target'
+        GIT_USER_NAME = 'vlonje20'
+        GIT_USER_EMAIL = 'vlonje20@gmail.com'
+        BASE_PORT = 8100 // Default port to start from
+    }
+
+    stages {
+        stage('Agent Details') {
+            steps {
+                echo "Running on agent: ${env.NODE_NAME}"
+                sh 'uname -a'
+                sh 'whoami'
+            }
+        }
+
+        stage('Clone Repository') {
+            steps {
+                git branch: "${env.BRANCH_NAME}", url: "${env.GITHUB_REPO_URL}", credentialsId: "${env.GITHUB_CREDENTIALS_ID}"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                script {
+                    sh 'sudo docker --version'
+                    sh "sudo docker build -t ${env.DOCKERHUB_REPO}:latest ."
+                }
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: "${env.DOCKERHUB_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh 'sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                        sh "sudo docker push ${env.DOCKERHUB_REPO}:latest"
+                        sh 'sudo docker logout'
+                    }
+                }
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    // Generate unique container name and check for an available port
+                    def containerName = "vin-movies-${env.BUILD_ID}"
+                    def availablePort = sh(
+                        script: '''
+                        PORT=${BASE_PORT}
+                        while lsof -i :$PORT > /dev/null; do
+                            PORT=$((PORT + 1))
+                        done
+                        echo $PORT
+                        ''',
+                        returnStdout: true
+                    ).trim()
+
+                    // Store port and container name in environment variables
+                    env.CONTAINER_NAME = containerName
+                    env.CONTAINER_PORT = availablePort
+
+                    echo "Starting container: ${env.CONTAINER_NAME} on port: ${env.CONTAINER_PORT}"
+                    sh "sudo docker run --name ${env.CONTAINER_NAME} --rm -d -p ${env.CONTAINER_PORT}:8080 ${env.DOCKERHUB_REPO}:latest"
+                }
+            }
+        }
+
+        stage('Upload Artifacts to GitLab') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: "${env.GITLAB_CREDENTIALS_ID}", usernameVariable: 'GITLAB_USERNAME', passwordVariable: 'GITLAB_PASSWORD')]) {
+                        sh """
+                        mkdir gitlab-artifacts-${BUILD_ID}
+                        cd gitlab-artifacts-${BUILD_ID}
+                        git init
+                        git config user.name "${env.GIT_USER_NAME}"
+                        git config user.email "${env.GIT_USER_EMAIL}"
+                        git remote add origin ${env.GITLAB_REPO_URL}
+                        cp -r ../${env.ARTIFACTS_DIR}/* .
+                        git add .
+                        git commit -m "Upload build artifacts from Jenkins pipeline [BUILD_ID: ${BUILD_ID}]"
+                        git push https://${GITLAB_USERNAME}:${GITLAB_PASSWORD}@${env.GITLAB_REPO_URL.replace('https://', '')}
+                        """
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Cleaning up Docker containers and images..."
+            sh "sudo docker ps -a | grep ${env.CONTAINER_NAME} && sudo docker stop ${env.CONTAINER_NAME} || true"
+            sh "sudo docker rmi ${env.DOCKERHUB_REPO}:latest || true"
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
