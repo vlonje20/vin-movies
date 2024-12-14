@@ -1,7 +1,3 @@
-// This Jenkinsfile comprises of the following tools:
-// - gitlad = for artifactory backup
-// - dockerhub = for image backup
-
 pipeline {
     agent { label 'agent1' }
 
@@ -14,6 +10,8 @@ pipeline {
         GITLAB_REPO_URL = 'https://gitlab.com/vlonje20/vin-movies-artifacts.git'
         GITLAB_CREDENTIALS_ID = 'gitlab_cred'
         ARTIFACTS_DIR = 'target'
+        GIT_USER_NAME = 'vlonje20'
+        GIT_USER_EMAIL = 'vlonje20@gmail.com'
     }
 
     stages {
@@ -74,6 +72,8 @@ pipeline {
                         mkdir gitlab-artifacts-${BUILD_ID}
                         cd gitlab-artifacts-${BUILD_ID}
                         git init
+                        git config user.name "${env.GIT_USER_NAME}"
+                        git config user.email "${env.GIT_USER_EMAIL}"
                         git remote add origin ${env.GITLAB_REPO_URL}
                         cp -r ../${env.ARTIFACTS_DIR}/* .
                         git add .

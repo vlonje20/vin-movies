@@ -1,5 +1,7 @@
+// This is a simple Jenkinsfile to build images and containers
+
 pipeline {
-    agent { label 'agent2' }  // Replace 'wsl-agent' with the label of your agent
+    agent { label 'agent2' }  // Replace 'agent1' with the label of your agent
 
     environment {
         GITHUB_REPO_URL = 'https://github.com/vlonje20/vin-movies.git'
