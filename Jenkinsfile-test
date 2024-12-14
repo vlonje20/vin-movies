@@ -62,16 +62,28 @@ pipeline {
                 script {
                     // Generate unique container name
                     def containerName = "vin-movies-${env.BUILD_ID}"
-                    
-                    // Find an available port
+
+                    // Define port range (e.g., 8101 to 8200)
+                    def startPort = 8101
+                    def endPort = 8200
+
+                    // Find an available port within the defined range
                     def availablePort = sh(
-                        script: '''
-                        PORT=${BASE_PORT}
-                        while lsof -i :$PORT > /dev/null; do
-                            PORT=$((PORT + 1))
+                        script: """
+                        PORT=${startPort}
+                        while [ \$PORT -le ${endPort} ]; do
+                            if ! lsof -i :\$PORT > /dev/null; then
+                                echo \$PORT
+                                break
+                            fi
+                            PORT=\$((PORT + 1))
                         done
-                        echo $PORT
-                        ''',
+
+                        if [ \$PORT -gt ${endPort} ]; then
+                            echo "ERROR: No available ports in the range ${startPort}-${endPort}" >&2
+                            exit 1
+                        fi
+                        """,
                         returnStdout: true
                     ).trim()
 
