@@ -64,7 +64,7 @@ pipeline {
                     def containerName = "vin-movies-${env.BUILD_ID}"
 
                     // Define port range (e.g., 8101 to 8200)
-                    def startPort = 8101
+                    def startPort = 8102
                     def endPort = 8200
 
                     // Find an available port within the defined range
@@ -112,7 +112,7 @@ pipeline {
                         git fetch origin
                         git reset --hard origin/master
                         git clean -fd
-                        
+
                         # Override any changes in the remote repository
                         cp -r ../${env.ARTIFACTS_DIR}/* .
                         git add .
