@@ -1,3 +1,9 @@
+// This Jenkinsfile is under testing
+// This Jenkinsfile comprises of the following tools:
+// - gitlad = for artifactory backup
+// - dockerhub = for image backup
+// - Contains the condition to dynamically assigned ports and container name tags so that a rerun will not break
+
 pipeline {
     agent { label 'agent1' }
 
@@ -12,6 +18,7 @@ pipeline {
         ARTIFACTS_DIR = 'target'
         GIT_USER_NAME = 'vlonje20'
         GIT_USER_EMAIL = 'vlonje20@gmail.com'
+        BASE_PORT = 8100 // Default port to start from
     }
 
     stages {
@@ -59,7 +66,25 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    sh "sudo docker run --name vin-movies --rm -d -p 8100:8080 ${env.DOCKERHUB_REPO}:latest"
+                    // Generate unique container name and check for an available port
+                    def containerName = "vin-movies-${env.BUILD_ID}"
+                    def availablePort = sh(
+                        script: '''
+                        PORT=${BASE_PORT}
+                        while lsof -i :$PORT > /dev/null; do
+                            PORT=$((PORT + 1))
+                        done
+                        echo $PORT
+                        ''',
+                        returnStdout: true
+                    ).trim()
+
+                    // Store port and container name in environment variables
+                    env.CONTAINER_NAME = containerName
+                    env.CONTAINER_PORT = availablePort
+
+                    echo "Starting container: ${env.CONTAINER_NAME} on port: ${env.CONTAINER_PORT}"
+                    sh "sudo docker run --name ${env.CONTAINER_NAME} -d -p ${env.CONTAINER_PORT}:8080 ${env.DOCKERHUB_REPO}:latest"
                 }
             }
         }
@@ -88,8 +113,8 @@ pipeline {
 
     post {
         always {
-            echo 'Cleaning up Docker containers and images...'
-            sh 'sudo docker ps -a | grep vin-movies && sudo docker stop vin-movies || true'
+            echo "Cleaning up Docker containers and images..."
+            sh "sudo docker ps -a | grep ${env.CONTAINER_NAME} && sudo docker stop ${env.CONTAINER_NAME} || true"
             sh "sudo docker rmi ${env.DOCKERHUB_REPO}:latest || true"
         }
         success {

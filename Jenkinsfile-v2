@@ -1,3 +1,9 @@
+// This Jenkinsfile has been tested and its working
+// This Jenkinsfile comprises of the following tools:
+// - gitlad = for artifactory backup
+// - dockerhub = for image backup
+// - Contains the condition to dynamically assigned ports and container name tags so that a rerun will not break
+
 pipeline {
     agent { label 'agent1' }
 
