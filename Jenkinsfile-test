@@ -12,7 +12,7 @@ pipeline {
         ARTIFACTS_DIR = 'target'
         GIT_USER_NAME = 'vlonje20'
         GIT_USER_EMAIL = 'vlonje20@gmail.com'
-        BASE_PORT = 8100
+        BASE_PORT = 8100 // Default port to start from
     }
 
     stages {
@@ -60,7 +60,10 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
+                    // Generate unique container name
                     def containerName = "vin-movies-${env.BUILD_ID}"
+                    
+                    // Find an available port
                     def availablePort = sh(
                         script: '''
                         PORT=${BASE_PORT}
@@ -72,6 +75,7 @@ pipeline {
                         returnStdout: true
                     ).trim()
 
+                    // Store port and container name in environment variables
                     env.CONTAINER_NAME = containerName
                     env.CONTAINER_PORT = availablePort
 
