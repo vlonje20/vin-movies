@@ -12,7 +12,7 @@ pipeline {
         ARTIFACTS_DIR = 'target'
         GIT_USER_NAME = 'vlonje20'
         GIT_USER_EMAIL = 'vlonje20@gmail.com'
-        BASE_PORT = 8100 // Default port to start from
+        BASE_PORT = 8100
     }
 
     stages {
@@ -93,12 +93,13 @@ pipeline {
                         git config user.email "${env.GIT_USER_EMAIL}"
                         git remote add origin ${env.GITLAB_REPO_URL}
                         
-                        git pull origin master || true
-                        
+                        # Override any changes in the remote repository
                         cp -r ../${env.ARTIFACTS_DIR}/* .
                         git add .
                         git commit -m "Upload build artifacts from Jenkins pipeline [BUILD_ID: ${BUILD_ID}]"
-                        git push https://${GITLAB_USERNAME}:${GITLAB_PASSWORD}@${env.GITLAB_REPO_URL.replace('https://', '')} master
+                        
+                        # Force push to overwrite remote changes
+                        git push -f https://${GITLAB_USERNAME}:${GITLAB_PASSWORD}@${env.GITLAB_REPO_URL.replace('https://', '')} master
                         """
                     }
                 }
