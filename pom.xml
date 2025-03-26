@@ -18,29 +18,15 @@
 
  <properties>
 
-    <!-- Java Development Kit Version -->
-    <jdk.version>1.8</jdk.version>
-
-    <!-- Spring Framework Version -->
-    <spring.version>5.1.2.RELEASE</spring.version>
-
-    <!-- JUnit Version -->
-    <junit.version>4.11</junit.version>
-
-    <!-- Log4j Version -->
-    <log4j.version>1.2.17</log4j.version>
-
-    <!-- SonarQube Host Configuration -->
-    <sonar.host.url>http://localhost:9000</sonar.host.url> <!-- Removed unnecessary trailing slash -->
-    <sonar.login>admin</sonar.login>
-
-    <!-- Project Encoding -->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-    <!-- Sonar Project Details -->
-    <sonar.projectKey>squ_2d4667147d8eb548e425d42dc1ad98a1632b38a2</sonar.projectKey> <!-- Ensure this key matches your SonarQube configuration -->
-    <sonar.projectName>vin-movies</sonar.projectName> <!-- Ensure this name aligns with the project setup in SonarQube -->
+  <jdk.version>1.8</jdk.version>
+  <spring.version>5.1.2.RELEASE</spring.version>
+  <junit.version>4.11</junit.version>
+  <log4j.version>1.2.17</log4j.version>        
+  sonar.host.url>http://localhost:9000/</sonar.host.url>
+  <sonar.login>squ_2d4667147d8eb548e425d42dc1ad98a1632b38a2</sonar.login>        
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  <sonar.projectName>vin-movies</sonar.projectName>
         
  </properties>
 
