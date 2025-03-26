@@ -1,153 +1,154 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
- <modelVersion>4.0.0</modelVersion>
- 
- <groupId>com.mt</groupId>
- <artifactId>maven-web-application</artifactId>
- <packaging>war</packaging>
- <version>0.0.1-SNAPSHOT</version>
- 
- <name>vin-solutions-app</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
- <description>Vin Movie Project</description>
+    <modelVersion>4.0.0</modelVersion>
 
- <organization>
-  <name>Vin Technologies</name>
-  <url>http://vintech.com/</url>
- </organization>
+    <groupId>com.mt</groupId>
+    <artifactId>maven-web-application</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
 
- <properties>
-  <jdk.version>1.8</jdk.version>
-  <spring.version>5.1.2.RELEASE</spring.version>
-  <junit.version>4.11</junit.version>
-  <log4j.version>1.2.17</log4j.version>        
-  sonar.host.url>http://localhost:9000</sonar.host.url>
-  <sonar.login>squ_2d4667147d8eb548e425d42dc1ad98a1632b38a2</sonar.login>        
-  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  <sonar.projectName>vin-movies</sonar.projectName>      
- </properties>
+    <name>vin-solutions-app</name>
+    <description>Vin Movie Project</description>
 
+    <organization>
+        <name>Vin Technologies</name>
+        <url>http://vintech.com/</url>
+    </organization>
 
- <dependencies>
-  
-  <dependency>
-   <groupId>org.json</groupId>
-   <artifactId>json</artifactId>
-   <version>20160212</version>
-  </dependency>
-  
-  <!-- test dependencies -->
-  <dependency>
-   <groupId>junit</groupId>
-   <artifactId>junit</artifactId>
-   <version>3.8.1</version>
-   <scope>test</scope>
-  </dependency>
+    <properties>
+        <jdk.version>1.8</jdk.version>
+        <spring.version>5.1.2.RELEASE</spring.version>
+        <junit.version>4.11</junit.version>
+        <log4j.version>1.2.17</log4j.version>
 
-  <dependency>
-   <groupId>javax.servlet</groupId>
-   <artifactId>javax.servlet-api</artifactId>
-   <version>3.1.0</version>
-   <scope>provided</scope>
-  </dependency>
+        <!-- Fixed syntax: Added missing '<' -->
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.login>squ_2d4667147d8eb548e425d42dc1ad98a1632b38a2</sonar.login>
 
-  <dependency>
-   <groupId>org.mockito</groupId>
-   <artifactId>mockito-core</artifactId>
-   <version>1.9.5</version>
-   <scope>test</scope>
-  </dependency>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <sonar.projectName>vin-movies</sonar.projectName>
+    </properties>
 
-  <!-- compile dependencies -->
+    <dependencies>
 
-  <dependency>
-   <groupId>org.springframework</groupId>
-   <artifactId>spring-core</artifactId>
-   <version>${spring.version}</version>
-  </dependency>
-  <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-  <dependency>
-   <groupId>org.springframework</groupId>
-   <artifactId>spring-webmvc</artifactId>
-   <version>${spring.version}</version>
-  </dependency>
-  <dependency>
-   <groupId>org.springframework</groupId>
-   <artifactId>spring-context</artifactId>
-   <version>${spring.version}</version>
-  </dependency>
-  
-  <!-- provided dependencies -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160212</version>
+        </dependency>
 
-  <dependency>
-   <groupId>javax.servlet</groupId>
-   <artifactId>javax.servlet-api</artifactId>
-   <version>3.1.0</version>
-   <scope>provided</scope>
-  </dependency>
-  
- </dependencies>
- 
- <distributionManagement>
-     <repository>
-       <id>nexus</id>
-       <name>vin-movies-release</name>
-       <url>http://localhost:8081/repository/vin-movies-release/</url>
-     </repository>
-     
-     <snapshotRepository>
-       <id>nexus</id>
-       <name>vin-movies-snapshot</name>
-       <url>http://localhost:8081/repository/vin-movies-snapshot/</url>
-     </snapshotRepository>
-     
- </distributionManagement>
- 
- <build>
-  <finalName>vin-movies</finalName>
-  
-  <plugins>
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.3</version>
-    <configuration>
-     <source>${jdk.version}</source>
-     <target>${jdk.version}</target>
-    </configuration>
-   </plugin>
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
 
-   <plugin>
-    <groupId>org.eclipse.jetty</groupId>
-    <artifactId>jetty-maven-plugin</artifactId>
-    <version>9.2.11.v20150529</version>
-    <configuration>
-     <scanIntervalSeconds>10</scanIntervalSeconds>
-     <webApp>
-      <contextPath>/maven-web-application</contextPath>
-     </webApp>
-    </configuration>
-   </plugin>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
 
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-eclipse-plugin</artifactId>
-    <version>2.9</version>
-    <configuration>
-     <downloadSources>true</downloadSources>
-     <downloadJavadocs>true</downloadJavadocs>
-     <wtpversion>2.0</wtpversion>
-     <wtpContextName>maven-web-application</wtpContextName>
-    </configuration>
-   </plugin>
-   
-</plugins>
- </build>
- 
- 
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Compile dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Provided dependencies -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>vin-movies-release</name>
+            <url>http://localhost:8081/repository/vin-movies-release/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>vin-movies-snapshot</name>
+            <url>http://localhost:8081/repository/vin-movies-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <finalName>vin-movies</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.11.v20150529</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webApp>
+                        <contextPath>/maven-web-application</contextPath>
+                    </webApp>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>true</downloadJavadocs>
+                    <wtpversion>2.0</wtpversion>
+                    <wtpContextName>maven-web-application</wtpContextName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
